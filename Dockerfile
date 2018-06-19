@@ -24,7 +24,8 @@ RUN apt-get update && \
     echo "root:root" | chpasswd && \
     mkdir -p /root/.ssh/ && \
     touch /root/.ssh/authorized_keys && \
-    chmod -R 700 /root/.ssh
+    chmod -R 700 /root/.ssh && \
+    mkdir -p /init-pub-key.d/
 
 ADD ./entrypoint.sh .
 RUN chmod +x entrypoint.sh

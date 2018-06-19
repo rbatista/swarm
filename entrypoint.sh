@@ -1,15 +1,19 @@
 #!/usr/bin/env bash
 
-for pkey in /init-pub-key.d/*.pub; do
-  echo "Authorize key $pkey"
-  cat $pkey >> /root/.ssh/authorized_keys
+for f in /init-pub-key.d/*.pub; do
+  if [ -e "$f" ]; then
+    echo "Authorize key $f"
+    cat $f >> /root/.ssh/authorized_keys
+  else
+    echo "Ignoring $f"
+  fi
 done
 
 echo "Starting ssh server"
 service ssh start
 
 echo "Initialize swarm"
-docker swarm init > /swarm_id
+docker swarm init
 
-tail -f /swarm_id
+tail -f /dev/null
 
