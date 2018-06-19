@@ -21,4 +21,12 @@ RUN apt-get update && \
         vim && \
     echo "PermitRootLogin yes" >> /etc/ssh/sshd_config && \
     /etc/init.d/ssh restart && \
-    echo "root:root" | chpasswd
+    echo "root:root" | chpasswd && \
+    mkdir -p /root/.ssh/ && \
+    touch /root/.ssh/authorized_keys && \
+    chmod -R 700 /root/.ssh
+
+ADD ./entrypoint.sh .
+RUN chmod +x entrypoint.sh
+
+ENTRYPOINT ["./entrypoint.sh"]
