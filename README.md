@@ -33,6 +33,6 @@ ssh -i $HOME/.ssh/id_rsa root@CONTEINER_IP
 ```
 
 If your public/private key are in the $HOME/.ssh you dont need to pass the key path:
-``console
+```console
 ssh root@CONTEINER_IP
 ```
