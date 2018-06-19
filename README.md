@@ -2,6 +2,12 @@
 
 NOT FOR PRODUCTION ENVIRONMENT
 
+## Running the image
+```console
+docker build --tag swarm .
+docker run --rm -v /var/run/docker.sock:/var/run/docker.sock swarm
+```
+
 ## openssh
 
 ## User and password access
